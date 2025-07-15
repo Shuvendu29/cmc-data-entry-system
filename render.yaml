@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: cmc-data-entry-system
+    env: node
+    plan: free # You can upgrade to starter or higher plans as needed
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: NEXT_PUBLIC_APP_URL
+        value: https://softwireindia.info
+      - key: NEXT_PUBLIC_APP_NAME
+        value: "CMC Data Entry System"
+      - key: NEXT_PUBLIC_APP_DESCRIPTION
+        value: "Marine Water Quality Monitoring System"
+      - key: NEXT_PUBLIC_APP_VERSION
+        value: "1.0.0"
+    domains:
+      - softwireindia.info
+      - www.softwireindia.info
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+    routes:
+      - type: redirect
+        source: https://softwireindia.info/*
+        destination: https://www.softwireindia.info/:splat
+        status: 301
