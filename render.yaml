@@ -32,8 +32,7 @@ services:
       - path: /*
         name: Strict-Transport-Security
         value: max-age=31536000; includeSubDomains
-    routes:
-      - type: redirect
-        source: https://softwireindia.info/*
+    redirects:
+      - source: https://softwireindia.info/*
         destination: https://www.softwireindia.info/:splat
-        status: 301
+        type: permanent
