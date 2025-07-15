@@ -12,13 +12,10 @@ services:
       - key: PORT
         value: 10000
       - key: NEXT_PUBLIC_APP_URL
-        value: https://softwireindia.info
+        value: https://cmc-data-entry-system.onrender.com
       - key: NEXT_PUBLIC_APP_NAME
         value: "CMC Data Entry System"
       - key: NEXT_PUBLIC_APP_DESCRIPTION
         value: "Marine Water Quality Monitoring System"
       - key: NEXT_PUBLIC_APP_VERSION
         value: "1.0.0"
-    domains:
-      - softwireindia.info
-      - www.softwireindia.info
