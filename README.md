@@ -29,7 +29,54 @@ A comprehensive web-based data entry system for marine water quality monitoring,
 #### Analyst Access
 - **Username**: `analyst`
 - **Password**: `analyst123`
-- **Capabilities**: Data entry with assigned parameters
+- **Role**: Marine Data Analyst
+
+### Additional Test Users
+- **Water Quality Chemist**: `chemist` / `chemist123`
+- **Marine Biologist**: `biologist` / `biologist123`
+- **Lab Technician**: `technician` / `tech123`
+
+## 🏭 Production Deployment
+
+### Prerequisites
+- Node.js 18+ and npm 8+
+- 2GB+ RAM recommended
+- Domain with SSL certificate
+
+### Environment Setup
+1. Copy `.env.example` to `.env.local`
+2. Configure production environment variables:
+```bash
+NODE_ENV=production
+PORT=3000
+NEXT_PUBLIC_APP_URL=https://yourdomain.com
+NEXT_PUBLIC_DEMO_MODE=false
+```
+
+### Build & Deploy
+```bash
+# Install dependencies
+npm ci --only=production
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+### Security Considerations
+- Default demo passwords must be changed in production
+- Enable rate limiting for login attempts
+- Configure proper CORS policies
+- Use HTTPS in production
+- Regular security updates
+
+### Performance Optimization
+- Static assets are optimized automatically
+- Console logs removed in production builds
+- Image optimization enabled
+- Compression enabled for faster loading
 
 ## 🛠 Technology Stack
 

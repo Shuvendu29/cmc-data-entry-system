@@ -127,7 +127,7 @@ export const WATER_QUALITY_PARAMETERS = [
 export const PROJECT_CONFIGURATIONS: ProjectConfiguration[] = [
   {
     id: '1',
-    projectId: 'iczmp',
+    projectId: '2',
     year: '2024',
     period: '1',
     parameters: [
@@ -139,7 +139,7 @@ export const PROJECT_CONFIGURATIONS: ProjectConfiguration[] = [
   },
   {
     id: '2',
-    projectId: 'nwmp',
+    projectId: '1',
     year: '2024',
     period: '1',
     parameters: [
@@ -151,7 +151,7 @@ export const PROJECT_CONFIGURATIONS: ProjectConfiguration[] = [
   },
   {
     id: '3',
-    projectId: 'outfall',
+    projectId: '3',
     year: '2024',
     period: '1',
     parameters: [
@@ -160,11 +160,195 @@ export const PROJECT_CONFIGURATIONS: ProjectConfiguration[] = [
     ],
     createdDate: '2024-01-15',
     updatedDate: '2024-01-15'
+  },
+  // 2025 Configurations
+  {
+    id: '4',
+    projectId: '2',
+    year: '2025',
+    period: '1',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Turbidity',
+      'Suspended Solids', 'BOD', 'Fecal Coliform', 'Arsenic', 'Cadmium', 'Lead', 'Mercury', 'Iron', 'Manganese'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '5',
+    projectId: '1',
+    year: '2025',
+    period: '1',
+    parameters: [
+      'Date', 'Time', 'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Salinity',
+      'BOD', 'Nitrates', 'Phosphates', 'Heavy Metals', 'Turbidity', 'Suspended Solids',
+      'Oil & Grease', 'Fecal Coliform', 'Arsenic', 'Cadmium', 'Lead', 'Mercury'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '6',
+    projectId: '3',
+    year: '2025',
+    period: '1',
+    parameters: [
+      'pH', 'Temperature', 'BOD', 'Oil & Grease', 'Suspended Solids',
+      'Fecal Coliform', 'Heavy Metals', 'Turbidity', 'Conductivity', 'Dissolved Oxygen'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '7',
+    projectId: '2',
+    year: '2025',
+    period: '2',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Turbidity',
+      'Suspended Solids', 'BOD', 'Fecal Coliform', 'Arsenic', 'Cadmium', 'Lead'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '8',
+    projectId: '1',
+    year: '2025',
+    period: '2',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Salinity',
+      'BOD', 'Nitrates', 'Phosphates', 'Heavy Metals', 'Turbidity'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '9',
+    projectId: '3',
+    year: '2025',
+    period: '2',
+    parameters: [
+      'pH', 'Temperature', 'BOD', 'Oil & Grease', 'Suspended Solids',
+      'Fecal Coliform', 'Heavy Metals', 'Turbidity'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '10',
+    projectId: '2',
+    year: '2025',
+    period: '3',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Turbidity',
+      'Suspended Solids', 'BOD', 'Fecal Coliform', 'Iron', 'Manganese'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '11',
+    projectId: '1',
+    year: '2025',
+    period: '3',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Salinity',
+      'BOD', 'Nitrates', 'Phosphates', 'Turbidity', 'Suspended Solids'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  {
+    id: '12',
+    projectId: '3',
+    year: '2025',
+    period: '3',
+    parameters: [
+      'pH', 'Temperature', 'BOD', 'Oil & Grease', 'Suspended Solids',
+      'Fecal Coliform', 'Turbidity', 'Conductivity'
+    ],
+    createdDate: '2025-01-15',
+    updatedDate: '2025-01-15'
+  },
+  // Additional 2024 configurations for all periods
+  {
+    id: '13',
+    projectId: '1',
+    year: '2024',
+    period: '2',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Salinity',
+      'BOD', 'Nitrates', 'Phosphates', 'Heavy Metals'
+    ],
+    createdDate: '2024-06-15',
+    updatedDate: '2024-06-15'
+  },
+  {
+    id: '14',
+    projectId: '1',
+    year: '2024',
+    period: '3',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Salinity',
+      'BOD', 'Turbidity', 'Suspended Solids'
+    ],
+    createdDate: '2024-11-15',
+    updatedDate: '2024-11-15'
+  },
+  {
+    id: '15',
+    projectId: '2',
+    year: '2024',
+    period: '2',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Turbidity',
+      'Suspended Solids', 'BOD', 'Fecal Coliform', 'Arsenic', 'Lead'
+    ],
+    createdDate: '2024-06-15',
+    updatedDate: '2024-06-15'
+  },
+  {
+    id: '16',
+    projectId: '2',
+    year: '2024',
+    period: '3',
+    parameters: [
+      'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Turbidity',
+      'BOD', 'Arsenic', 'Cadmium', 'Lead', 'Iron'
+    ],
+    createdDate: '2024-11-15',
+    updatedDate: '2024-11-15'
+  },
+  {
+    id: '17',
+    projectId: '3',
+    year: '2024',
+    period: '2',
+    parameters: [
+      'pH', 'Temperature', 'BOD', 'Oil & Grease', 'Suspended Solids',
+      'Fecal Coliform', 'Heavy Metals', 'Turbidity', 'Conductivity'
+    ],
+    createdDate: '2024-06-15',
+    updatedDate: '2024-06-15'
+  },
+  {
+    id: '18',
+    projectId: '3',
+    year: '2024',
+    period: '3',
+    parameters: [
+      'pH', 'Temperature', 'BOD', 'Oil & Grease', 'Suspended Solids',
+      'Fecal Coliform', 'Turbidity'
+    ],
+    createdDate: '2024-11-15',
+    updatedDate: '2024-11-15'
   }
 ];
 
 // Available parameters by category for easy management
 export const PARAMETER_CATEGORIES = {
+  temporal: ['Date', 'Time'],
   physical: ['pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Turbidity', 'Suspended Solids', 'Salinity'],
   chemical: ['BOD', 'COD', 'Nitrates', 'Phosphates', 'Ammonia', 'Oil & Grease'],
   biological: ['Fecal Coliform', 'Chlorophyll-a'],

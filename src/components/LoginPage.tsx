@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Eye, EyeOff, Building2, CheckCircle, AlertCircle } from 'lucide-react';
 import { User } from '../types';
 import { DEMO_USERS } from '../data/constants';
+import { sanitizeInput, validateCredentials, loginRateLimiter } from '../lib/security';
 
 interface LoginPageProps {
   onLogin: (user: User) => void;
@@ -21,100 +22,46 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     setError('');
     setIsLoading(true);
 
-    console.log('=== LOGIN ATTEMPT START ===');
-    console.log('Login attempt:', { username, password });
-    console.log('Available users:', DEMO_USERS);
-
     try {
-      // Synchronous lookup to avoid any async issues
+      // Sanitize inputs
+      const cleanUsername = sanitizeInput(username);
+      const cleanPassword = sanitizeInput(password);
+
+      // Validate input format
+      const validation = validateCredentials(cleanUsername, cleanPassword);
+      if (!validation.isValid) {
+        setError(validation.errors.join('. '));
+        setIsLoading(false);
+        return;
+      }
+
+      // Check rate limiting
+      const clientId = 'login_' + (typeof window !== 'undefined' ? window.location.hostname : 'server');
+      if (loginRateLimiter.isRateLimited(clientId)) {
+        setError('Too many login attempts. Please wait before trying again.');
+        setIsLoading(false);
+        return;
+      }
+
+      // Find user with matching credentials
       const user = DEMO_USERS.find(u => 
-        u.username.trim() === username.trim() && 
-        u.password.trim() === password.trim() && 
+        u.username.trim() === cleanUsername && 
+        u.password.trim() === cleanPassword && 
         u.isActive
       );
 
-      console.log('User search result:', user);
-
       if (user) {
-        console.log('✅ Login successful, calling onLogin with user:', user);
-        console.log('User details:', JSON.stringify(user, null, 2));
-        
-        // Clear form and call onLogin
+        // Reset rate limiter on successful login
+        loginRateLimiter.reset(clientId);
         setIsLoading(false);
         onLogin(user);
-        
-        console.log('onLogin called successfully');
       } else {
-        console.log('❌ Login failed - no matching user found');
-        console.log('Comparison details:');
-        DEMO_USERS.forEach((u, index) => {
-          console.log(`User ${index + 1}:`, {
-            username: u.username,
-            usernameMatch: u.username.trim() === username.trim(),
-            password: u.password,
-            passwordMatch: u.password.trim() === password.trim(),
-            isActive: u.isActive
-          });
-        });
         setError('Invalid credentials or inactive account');
         setIsLoading(false);
       }
     } catch (err) {
-      console.error('Error during login:', err);
       setError('Login error: ' + (err instanceof Error ? err.message : 'Unknown error'));
       setIsLoading(false);
-    }
-    
-    console.log('=== LOGIN ATTEMPT END ===');
-  };
-
-  // Quick test function to verify authentication works
-  const testLogin = (testUsername: string, testPassword: string) => {
-    console.log('Testing login with:', testUsername, testPassword);
-    setError('');
-    
-    const user = DEMO_USERS.find(u => 
-      u.username === testUsername && 
-      u.password === testPassword && 
-      u.isActive
-    );
-    
-    console.log('Test - Available users:', DEMO_USERS.map(u => ({ username: u.username, password: u.password, isActive: u.isActive })));
-    console.log('Test - User found:', user);
-    
-    if (user) {
-      console.log('Test login successful, calling onLogin:', user);
-      onLogin(user);
-    } else {
-      console.log('Test login failed');
-      setError(`Test login failed for ${testUsername}/${testPassword}`);
-    }
-  };
-
-  // Simple synchronous login for debugging
-  const handleSimpleLogin = () => {
-    console.log('Simple login attempt with current form values:', { username, password });
-    setError('');
-    
-    if (!username.trim() || !password.trim()) {
-      setError('Please enter both username and password');
-      return;
-    }
-
-    const user = DEMO_USERS.find(u => 
-      u.username.trim() === username.trim() && 
-      u.password.trim() === password.trim() && 
-      u.isActive
-    );
-
-    console.log('Simple login - User found:', user);
-
-    if (user) {
-      console.log('Simple login successful, calling onLogin with user:', user);
-      onLogin(user);
-    } else {
-      console.log('Simple login failed - no matching user found');
-      setError('Invalid credentials or inactive account');
     }
   };
 

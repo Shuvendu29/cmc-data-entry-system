@@ -45,7 +45,25 @@ function ErrorBoundary({ children }: { children: React.ReactNode }) {
 function CMCDataEntrySystem() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   // Project-specific parameter assignments: { projectId_year_period: { userId: [parameters] } }
-  const [projectParameterAssignments, setProjectParameterAssignments] = useState<Record<string, Record<string, string[]>>>({});
+  const [projectParameterAssignments, setProjectParameterAssignments] = useState<Record<string, Record<string, string[]>>>({
+    // Demo assignments for testing - NWMP 2025 Pre-monsoon
+    '1_2025_1': {
+      '2': ['Date', 'Time', 'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen'], // Marine Data Analyst
+      '3': ['Date', 'Time', 'pH', 'Conductivity', 'BOD', 'Arsenic', 'Cadmium', 'Lead'], // Water Quality Chemist
+      '4': ['Date', 'Time', 'Dissolved Oxygen', 'Turbidity', 'Fecal Coliform'], // Marine Biologist
+      '5': ['Date', 'Time', 'Temperature', 'Suspended Solids', 'Turbidity', 'Iron', 'Manganese'], // Lab Technician
+    },
+    // Demo assignments for ICZMP 2025 Pre-monsoon
+    '2_2025_1': {
+      '2': ['Date', 'Time', 'pH', 'Temperature', 'Salinity', 'BOD'],
+      '3': ['Date', 'Time', 'Conductivity', 'Arsenic', 'Cadmium', 'Lead'],
+    },
+    // Demo assignments for NWMP 2024 Pre-monsoon
+    '1_2024_1': {
+      '2': ['pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen'],
+      '3': ['pH', 'BOD', 'Arsenic', 'Lead'],
+    }
+  });
 
   const handleLogin = useCallback((user: User) => {
     setCurrentUser(user);
@@ -59,7 +77,8 @@ function CMCDataEntrySystem() {
   const getUserParametersForProject = useCallback((userId: string, projectId: string, year: string, period: string) => {
     const projectKey = `${projectId}_${year}_${period}`;
     const projectAssignments = projectParameterAssignments[projectKey] || {};
-    return projectAssignments[userId] || [];
+    const userParams = projectAssignments[userId] || [];
+    return userParams;
   }, [projectParameterAssignments]);
 
   try {
