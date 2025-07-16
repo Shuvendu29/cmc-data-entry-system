@@ -1488,8 +1488,11 @@ export default function AdminDashboard({ user, onLogout, projectParameterAssignm
                 <div className="text-sm text-blue-800">
                   <p><strong>Project:</strong> {PROJECTS.find(p => p.id === selectedProjectForParams)?.name}</p>
                   <p><strong>Year:</strong> {selectedYearForParams}</p>
-                  <p><strong>Period:</strong> {selectedPeriodForParams}</p>
+                  <p><strong>Period:</strong> {PERIODS.find(p => p.id === selectedPeriodForParams)?.name}</p>
                   <p><strong>Available Parameters:</strong> {availableParameters.length} parameters</p>
+                  {availableParameters.length === 0 && (
+                    <p className="text-red-600 mt-2"><strong>Debug:</strong> No parameters found for this configuration. Check project configurations.</p>
+                  )}
                 </div>
               </div>
             )}
@@ -1566,6 +1569,17 @@ export default function AdminDashboard({ user, onLogout, projectParameterAssignm
                 })}
               </div>
             </div>
+          </div>
+        )}
+
+        {/* No Parameters Available */}
+        {showAssignments && availableParameters.length === 0 && (
+          <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 text-center">
+            <div className="text-orange-600 mb-2">
+              <FileText className="h-12 w-12 mx-auto mb-3" />
+            </div>
+            <h3 className="text-lg font-medium text-orange-800 mb-2">No Parameters Configured</h3>
+            <p className="text-orange-700">The selected project configuration doesn't have any parameters configured. Please add parameters in the Project Management section first.</p>
           </div>
         )}
 
