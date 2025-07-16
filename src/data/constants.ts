@@ -129,7 +129,7 @@ export const PROJECT_CONFIGURATIONS: ProjectConfiguration[] = [
     id: '1',
     projectId: 'iczmp',
     year: '2024',
-    period: 'Pre-monsoon',
+    period: '1',
     parameters: [
       'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Turbidity',
       'Suspended Solids', 'BOD', 'Fecal Coliform', 'Arsenic', 'Cadmium', 'Lead'
@@ -141,7 +141,7 @@ export const PROJECT_CONFIGURATIONS: ProjectConfiguration[] = [
     id: '2',
     projectId: 'nwmp',
     year: '2024',
-    period: 'Pre-monsoon',
+    period: '1',
     parameters: [
       'pH', 'Temperature', 'Conductivity', 'Dissolved Oxygen', 'Salinity',
       'BOD', 'Nitrates', 'Phosphates', 'Heavy Metals'
@@ -153,7 +153,7 @@ export const PROJECT_CONFIGURATIONS: ProjectConfiguration[] = [
     id: '3',
     projectId: 'outfall',
     year: '2024',
-    period: 'Pre-monsoon',
+    period: '1',
     parameters: [
       'pH', 'Temperature', 'BOD', 'Oil & Grease', 'Suspended Solids',
       'Fecal Coliform', 'Heavy Metals', 'Turbidity'

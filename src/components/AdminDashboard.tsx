@@ -1476,7 +1476,7 @@ export default function AdminDashboard({ user, onLogout, projectParameterAssignm
                 >
                   <option value="">Select Period</option>
                   {PERIODS.map(period => (
-                    <option key={period.id} value={period.name}>{period.name}</option>
+                    <option key={period.id} value={period.id}>{period.name}</option>
                   ))}
                 </select>
               </div>
